@@ -1,0 +1,74 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mssql-appraisal-instance3-deployment
+  namespace: appraisal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appraisal-instance3
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: appraisal-instance3
+        lblabel: mssql-ha
+    spec:
+      terminationGracePeriodSeconds: 10
+      hostname: appraisal-instance3
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: appraisal-instance3
+          image: registry.buluttakin.com/mcr.microsoft.com/mssql/server:2022-latest
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: MSSQL_PID
+              value: "Developer"
+            - name: MSSQL_ENABLE_HADR
+              value: "1"
+            - name: MSSQL_AGENT_ENABLED
+              value: "true"
+            - name: MSSQL_SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: appraisal-mssql-secret
+                  key: SA_PASSWORD
+          volumeMounts:
+            - name: mssqldb
+              mountPath: /var/opt/mssql
+          resources:
+            limits:
+              memory: 8G
+        - name: handler
+          image: registry.buluttakin.com/falahat/kube-sql-fail-handler:0.0.123
+          env:
+            - name: TZ
+              value: "Asia/Tehran"   
+            - name: PROJECTNAME
+              value: "appraisal"
+            - name: ALL_HOSTS
+              value: '["appraisal-instance1", "appraisal-instance2", "appraisal-instance3"]'
+            - name: HOSTNAME
+              value: "appraisal-instance3"
+            - name: DB_AG
+              value: "K8sAG"
+            - name: DB_PORT
+              value: "1433"
+            - name: FAILOVER_TOKEN
+              value: "hFD3gXB14Hhf4ds6Gz7pPOw6e8xDS"
+            - name: DB_USER
+              value: "SA"
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: appraisal-mssql-secret
+                  key: SA_PASSWORD
+      volumes:
+        - name: mssqldb
+          persistentVolumeClaim:
+            claimName: appraisal-instance3

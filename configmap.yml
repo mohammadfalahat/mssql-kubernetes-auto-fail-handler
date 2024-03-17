@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: appraisal-config-map
+  namespace: appraisal # Replace with your desired namespace
+data:
+  FAILOVER: "0" # String value can be set later
+  INITIALIZING: "0" # String value can be set later
+  READY_HOSTS: "[]" # String value can be set later
+  PRIMARY_HOST: "" # String value can be set later

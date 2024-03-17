@@ -1,0 +1,75 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: appraisal-instance1
+  namespace: appraisal
+spec:
+  selector:
+    app: appraisal-instance1
+  ports:
+    - name: listener
+      protocol: TCP
+      port: 7569
+    - name: sql
+      port: 1433
+      targetPort: 1433
+    - name: endpoint
+      port: 5022
+      targetPort: 5022
+  clusterIP: None
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: appraisal-instance2
+  namespace: appraisal
+spec:
+  selector:
+    app: appraisal-instance2
+  ports:
+    - name: listener
+      protocol: TCP
+      port: 7569
+    - name: sql
+      port: 1433
+      targetPort: 1433
+    - name: endpoint
+      port: 5022
+      targetPort: 5022
+  clusterIP: None
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: appraisal-instance3
+  namespace: appraisal
+spec:
+  selector:
+    app: appraisal-instance3
+  ports:
+    - name: listener
+      protocol: TCP
+      port: 7569
+    - name: sql
+      port: 1433
+      targetPort: 1433
+    - name: endpoint
+      port: 5022
+      targetPort: 5022
+  clusterIP: None
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mssql-primary-nodeport
+  namespace: appraisal
+spec:
+  type: NodePort
+  selector:
+    app: appraisal-instance1
+  ports:
+  - name: sql
+    protocol: TCP
+    port: 1433
+    targetPort: 1433
+    nodePort: 31111

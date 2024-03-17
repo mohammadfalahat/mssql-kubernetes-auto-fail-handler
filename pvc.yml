@@ -1,0 +1,35 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: appraisal-instance1
+  namespace: appraisal
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: appraisal-instance2
+  namespace: appraisal
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: appraisal-instance3
+  namespace: appraisal
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
