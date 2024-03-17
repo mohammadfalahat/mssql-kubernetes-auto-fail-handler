@@ -1,2 +1,2 @@
 # mssql-kubernetes-auto-fail-handler
-sql server always on availability group failover and back handler with GoLang based on kubernetes.
+Golang-based SQL Server Always On Availability Group Failover and Failback Handler within a Kubernetes Cluster
