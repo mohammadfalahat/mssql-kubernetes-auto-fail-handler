@@ -23,7 +23,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: appraisal-instance3
-          image: registry.buluttakin.com/mcr.microsoft.com/mssql/server:2022-latest
+          image: mcr.microsoft.com/mssql/server:2022-latest
           env:
             - name: ACCEPT_EULA
               value: "Y"
@@ -45,7 +45,7 @@ spec:
             limits:
               memory: 8G
         - name: handler
-          image: registry.buluttakin.com/falahat/kube-sql-fail-handler:0.0.123
+          image: registry.buluttakin.com/falahat/kube-sql-fail-handler:0.0.125
           env:
             - name: TZ
               value: "Asia/Tehran"   
