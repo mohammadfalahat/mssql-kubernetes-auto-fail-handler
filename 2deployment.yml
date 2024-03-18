@@ -43,7 +43,7 @@ spec:
               mountPath: /var/opt/mssql
           resources:
             limits:
-              memory: 8G
+              memory: 4G
         - name: handler
           image: falahat/kube-sql-fail-handler:0.0.125
           env:
