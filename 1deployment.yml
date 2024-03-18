@@ -45,7 +45,7 @@ spec:
             limits:
               memory: 8G
         - name: handler
-          image: registry.buluttakin.com/falahat/kube-sql-fail-handler:0.0.125
+          image: falahat/kube-sql-fail-handler:0.0.125
           env:
             - name: TZ
               value: "Asia/Tehran"           
