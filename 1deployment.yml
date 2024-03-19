@@ -31,6 +31,8 @@ spec:
               value: "Developer"
             - name: MSSQL_ENABLE_HADR
               value: "1"
+            - name: MSSQL_MEMORY_LIMIT_MB
+              value: "4096"
             - name: MSSQL_AGENT_ENABLED
               value: "true"
             - name: MSSQL_SA_PASSWORD
