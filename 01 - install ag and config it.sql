@@ -1,25 +1,25 @@
 USE [master]
 GO
 
-CREATE DATABASE DevTestAG
+CREATE DATABASE Appraisal360DB
 GO
 
-USE [DevTestAG]
+USE [Appraisal360DB]
 GO
 
-CREATE TABLE Customers([CustomerID] int NOT NULL, [CustomerName] varchar(30) NOT NULL)
-GO
+-- CREATE TABLE Customers([CustomerID] int NOT NULL, [CustomerName] varchar(30) NOT NULL)
+-- GO
 
-INSERT INTO Customers (CustomerID, CustomerName) VALUES (30, 'CANNON TOOLS'),
-                                                        (90, 'INTERNATIONAL BANK'),
-                                                        (130, 'SUN DIAL CITRUS')
+-- INSERT INTO Customers (CustomerID, CustomerName) VALUES (30, 'CANNON TOOLS'),
+--                                                         (90, 'INTERNATIONAL BANK'),
+--                                                         (130, 'SUN DIAL CITRUS')
 
 -- change DB recovery model to FULL and take full backup
-ALTER DATABASE [DevTestAG] SET RECOVERY FULL ;
+ALTER DATABASE [Appraisal360DB] SET RECOVERY FULL ;
 GO
 
-BACKUP DATABASE [DevTestAG] TO DISK = N'/var/opt/mssql/backup/DevTestAG.bak'
-WITH NOFORMAT, NOINIT, NAME = N'DevTestAG-Full Database Backup', SKIP, NOREWIND, NOUNLOAD, STATS = 10
+BACKUP DATABASE [Appraisal360DB] TO DISK = N'/var/opt/mssql/backup/Appraisal360DB.bak'
+WITH NOFORMAT, NOINIT, NAME = N'Appraisal360DB-Full Database Backup', SKIP, NOREWIND, NOUNLOAD, STATS = 10
 GO
 
 USE [master]
@@ -118,7 +118,7 @@ FOR REPLICA ON
 USE [master]
 GO
 
-ALTER AVAILABILITY GROUP [K8sAG] ADD DATABASE [DevTestAG]
+ALTER AVAILABILITY GROUP [K8sAG] ADD DATABASE [Appraisal360DB]
 GO
 
 

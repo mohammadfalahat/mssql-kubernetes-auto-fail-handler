@@ -73,3 +73,19 @@ spec:
     port: 1433
     targetPort: 1433
     nodePort: 31111
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mssql-random-instance
+  namespace: appraisal
+spec:
+  type: LoadBalancer
+  selector:
+    lblabel: mssql-ha
+  ports:
+  - name: sql
+    protocol: TCP
+    port: 1433
+    targetPort: 1433
+    nodePort: 31110

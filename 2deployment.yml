@@ -59,6 +59,8 @@ spec:
               value: "appraisal-instance2"
             - name: DB_AG
               value: "K8sAG"
+            - name: DB_NAME
+              value: "Appraisal360DB"
             - name: DB_PORT
               value: "1433"
             - name: FAILOVER_TOKEN
