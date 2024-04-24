@@ -82,6 +82,9 @@ spec:
                 secretKeyRef:
                   name: appraisal-mssql-secret
                   key: SA_PASSWORD
+          resources:
+            limits:
+              memory: 1G
       volumes:
         - name: mssqldb
           persistentVolumeClaim:
