@@ -16,6 +16,16 @@ spec:
         app: appraisal-instance2
         lblabel: mssql-ha
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: lblabel
+                operator: In
+                values:
+                - mssql-ha
+            topologyKey: "kubernetes.io/hostname" 
       terminationGracePeriodSeconds: 10
       hostname: appraisal-instance2
       restartPolicy: Always
