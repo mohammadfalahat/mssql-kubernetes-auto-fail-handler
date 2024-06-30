@@ -61,7 +61,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: mssql-primary-node1
+  name: mssql-node1
   namespace: appraisal
 spec:
   type: NodePort
@@ -77,7 +77,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: mssql-primary-node2
+  name: mssql-node2
   namespace: appraisal
 spec:
   type: NodePort
@@ -93,7 +93,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: mssql-primary-node3
+  name: mssql-node3
   namespace: appraisal
 spec:
   type: NodePort
