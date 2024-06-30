@@ -109,6 +109,21 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
+  name: mssql-ha
+  namespace: appraisal
+spec:
+  clusterIP: None
+  selector:
+    lblabel: mssql-ha
+  ports:
+  - name: sql
+    protocol: TCP
+    port: 1433
+    targetPort: 1433
+---
+kind: Service
+apiVersion: v1
+metadata:
   name: mssql-random-instance
   namespace: appraisal
 spec:
