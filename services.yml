@@ -136,3 +136,18 @@ spec:
     port: 1433
     targetPort: 1433
     nodePort: 31110
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: appraisal-primary
+  namespace: appraisal
+spec:
+  clusterIP: None
+  selector:
+    primary: appraisal-instance1
+  ports:
+  - name: sql
+    protocol: TCP
+    port: 1433
+    targetPort: 1433
