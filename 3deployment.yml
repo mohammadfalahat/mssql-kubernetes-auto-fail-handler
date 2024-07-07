@@ -57,7 +57,7 @@ spec:
             limits:
               memory: 5G
         - name: handler
-          image: falahat/kube-sql-fail-handler:0.0.139
+          image: falahat/kube-sql-fail-handler:0.0.141
           env:
             - name: TZ
               value: "Asia/Tehran"   
